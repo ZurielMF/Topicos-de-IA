@@ -19,10 +19,8 @@ def generarVecino(tablero):
     nuevo_tablero = tablero[:]
     fila = random.randint(0, n - 1)
     nueva_columna = random.randint(0, n - 1)
-
     while nuevo_tablero[fila] == nueva_columna:
         nueva_columna = random.randint(0, n - 1)
-
     nuevo_tablero[fila] = nueva_columna
     return nuevo_tablero
 
@@ -64,7 +62,6 @@ def resolverOchoReinasRecocidoSimulado(n, temperatura_inicial, temperatura_final
         mejor_vecino = min(mejores_vecinos, key=calcularConflictos)
         conflictos_mejor_vecino = calcularConflictos(mejor_vecino)
         delta = conflictos_mejor_vecino - conflictos_actuales
-
         if delta < 0 or random.random() < probabilidadAceptacion(delta, temperatura):
             tablero = mejor_vecino
             conflictos_actuales = conflictos_mejor_vecino
